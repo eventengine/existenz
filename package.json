@@ -1,0 +1,21 @@
+{
+    "name": "Existenz-Platform",
+  	"description": " Node.js Equity Crowdfunding platform on the Blockchain",
+  	"version": "0.0.1",
+    "main": "app.js",
+    "dependencies": {
+        "express": "~4.0.0",
+    	"express-session": "1.13.0",
+        "mongoose": "~3.6.13",
+        "body-parser": "~1.0.1",
+    	"bootstrap" : "3.3.6",
+    	"unit-test" : "0.0.9",
+    	"passport" : "0.3.2",
+    	"passport-local" : "1.0.0",
+    	"passport-local-mongoose" : "4.0.0",
+    	"jade": "1.11.0",
+    	"method-override" : "2.3.5",
+    	"morgan" : "1.6.1",
+    	"path": "0.12.7"
+    }
+}

@@ -1,0 +1,15 @@
+html
+  body
+    .container
+      form.form-signin(method='post')
+        t:attr(name='class')
+          t:slot(name='form_classes')
+        h2.form-signin-heading Please sign in
+        label.sr-only(for='username') Username
+        input#username.form-control(type='text', name='username', placeholder='Username', required='required', autofocus='autofocus')
+        label.sr-only(for='password') Password
+        input#password.form-control(type='password', name='password', placeholder='Password', required='required')
+          input#continue_to(type='hidden', name='continue_to', t:render='continue_to')
+          t:attr(name='value')
+            t:slot(name='continue_to')
+          button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
