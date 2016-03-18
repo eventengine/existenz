@@ -16,6 +16,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var api   = require('./scripts/coluApi-client.js'); // get our colu-api method library
 
 //main config
 var app = express();
