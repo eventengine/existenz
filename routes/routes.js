@@ -6,7 +6,7 @@
 //
 
 var index = require('../routes/index');
-//var api = require('../routes/api');
+var api = require('../routes/api');
 var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
@@ -18,8 +18,16 @@ module.exports = function (app) {
 	///////////////////////////
 	app.get('/', index.index);
 	
+	
+	// Colu-Api Routes
+	/////////////////////////////
+	app.get('/getadress', api.getAdress);
+	
 	// auth routes
 	/////////////////////////////
+	app.get('/login', function(req, res) {
+	    res.render('index/login', {title:" Login" });
+	});
 	app.get('/register', function(req, res) {
 	    res.render('index/register', {title:" Register" });
 	});
