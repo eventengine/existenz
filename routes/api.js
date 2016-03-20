@@ -106,3 +106,65 @@ exports.issueAsset = function (req, res){
 
 		api.postToApi('', json_data, _cb);	
 };
+
+exports.sendAsset = function (req, res){
+    console.log("sendAsset initiated..");
+    // test adress 
+    var address = "mx8vKfuhj2vWaNd7xzMK3F7uJKoF32HQu6";
+    var address1 = "mmLd3FMKq7LwmxbU6UPWeyoXgYx6TStdyq";
+    var assetId = "LEvxcnrvaZzN34MmGpogPvQPG1NunMUXMXqgs";
+	var _cb = function(err, body){
+		if (err) console.log('error: ',err);
+	    var data = {
+	            title: " Existenz - Equity Crowdfunding on the Blockchain",
+	            coluSendAssetResults  : JSON.stringify(body.result)
+	        };				
+		   console.log("sendAsset body : "+JSON.stringify(body.result));
+		   // think about a redirect instead
+		   res.render('index/index', data);
+		};    
+	var sendAsset = {
+		    "from":[address],
+		    "to": [{
+		        "address":address1,
+		        "amount":0,
+		        "assetId":assetId
+		    }],
+		    "metadata":{
+		        "userData":{
+		            "meta":[{
+		                "key":"ID",
+		                "value":100,
+		                "type":"Number"
+		            },{
+		                "key":"Issuer Name",
+		                "value":"My Name",
+		                "type":"String"
+		            },{
+		                "key":"Address",
+		                "value":"San Francisco, CA",
+		                "type":"String"
+		            },{
+		                "key":"Name",
+		                "value":"WF Shares",
+		                "type":"String"
+		            },{
+		                "key":"Description",
+		                "value":"Dummy WF Shares",
+		                "type":"String"
+		            }]
+		        }
+		    }
+		}
+
+		var json_data = {
+		    jsonrpc: "2.0", // mandatory
+		    
+		  method: "sendAsset",
+		 // mandatory
+		    id: "1", // mandatory if response is needed
+		    params: sendAsset // asset json object
+		};
+
+		api.postToApi('', json_data, _cb);
+};

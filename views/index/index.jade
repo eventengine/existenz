@@ -50,6 +50,13 @@ html
           p=coluIssueAssetResults 
         else
           p No Assets yet
+        h4 Get a Colu hd.wallet send.asset
+        a(href='/sendAsset') Send Assets
+        br
+        if coluSendAssetResults 
+          p=coluSendAssetResults  
+        else
+          p No Assets yet
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed

@@ -43,3 +43,8 @@
 * Design the re-distribution method ( n% of total amount distributed to n% privekey )
 * design a cash-in method that transfer n% amount to cash 
 * Integrate credit card payment processors ( for contribution and distribution)
+
+###### Colu start:
+* export COLU_SDK_RPC_SERVER_HTTP_PORT=8091
+* export COLU_SDK_NETWORK='testnet'
+* export COLU_SDK_PRIVATE_SEED=c619c575d28a0ab6777d6f971441b24f9ca202358361529f798b159c66bbcee9

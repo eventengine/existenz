@@ -24,6 +24,7 @@ module.exports = function (app) {
 	app.get('/getPrivateSeed', api.getPrivateSeed);
 	app.get('/getAdress', api.getAdress);
 	app.get('/issueAsset', api.issueAsset);
+	app.get('/sendAsset', api.sendAsset);
 	// auth routes
 	/////////////////////////////
 	app.get('/login', function(req, res) {
