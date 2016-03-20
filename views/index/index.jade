@@ -27,15 +27,29 @@ html
       .panel-heading 
         h3 Dev Box:
       .panel-body
-        h4 Colu Engine:
-        h5 Get a Colu hd.wallet adress
-        a(href='/getadress') getAdress
+        h3 Colu Engine:
+        h4 Get a Colu hd.wallet getPrivateSeed
+        a(href='/getPrivateSeed') getPrivateSeed
         br
-        if coluadress
-          p=coluadress
+        if coluPrivateSeed 
+          p=coluPrivateSeed 
         else
-          p No request yet
-
+          p No private seeds yet
+        br
+        h4 Get a Colu hd.wallet getAdress
+        a(href='/getAdress') getAdress
+        br
+        if colugetAdress 
+          p=colugetAdress 
+        else
+          p No adress yet
+        h4 Get a Colu hd.wallet issue.asset
+        a(href='/issueAsset') Issue Assets
+        br
+        if coluIssueAssetResults 
+          p=coluIssueAssetResults 
+        else
+          p No Assets yet
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed

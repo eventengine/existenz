@@ -27,7 +27,8 @@ module.exports= {
 		}, 
 		function (error, response, body) {
 			if (error) {
-				return callback(error);
+				//return callback(error);
+				return this.error(error, callback);
 			}
 			if (typeof body === 'string') {
 				body = JSON.parse(body);
@@ -36,6 +37,8 @@ module.exports= {
 		});
 },	
 "error": function(err, errback){
+// here will be a midlleware handling error response 
+// and action that must be canceled or something like that
 console.log("colu answered with an error : "+err);
 errback("colu answered with an error : "+err);
 },

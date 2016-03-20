@@ -21,8 +21,9 @@ module.exports = function (app) {
 	
 	// Colu-Api Routes
 	/////////////////////////////
-	app.get('/getadress', api.getAdress);
-	
+	app.get('/getPrivateSeed', api.getPrivateSeed);
+	app.get('/getAdress', api.getAdress);
+	app.get('/issueAsset', api.issueAsset);
 	// auth routes
 	/////////////////////////////
 	app.get('/login', function(req, res) {
@@ -42,10 +43,7 @@ module.exports = function (app) {
                if (err) {
                     return next(err);
                 }
-                var instance = new Data();
-                instance.username = req.body.username;
-                instance.save(function (err) {          	   
-          	    });
+
                 res.redirect('/');
            });
         });
