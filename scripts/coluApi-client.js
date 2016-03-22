@@ -45,10 +45,16 @@ errback("colu answered with an error : "+err);
 },
 "createProject": function(username, project_data, wallet_adress, callback){
 	// create a sample project
+	console.log("Create Project received project_data: "+JSON.stringify(project_data));
 	var project = new Projects({
 		meta:{ 
 		projectname: project_data.projectname,
-		admin: username,
+		admin: {
+			username: username,
+			firstname: project_data.firstname,
+			lastname: project_data.lastname,
+			email : project_data.email
+		},
 		hdwallet: wallet_adress
 	},
 	profile:{
@@ -57,8 +63,8 @@ errback("colu answered with an error : "+err);
 			title: project_data.projectname
 			},
 		body:{
-			website: "",
-			description: ""					
+			website: project_data.website,
+			description: project_data.description					
 			},
 		footer: {
 			copyrigth: ""

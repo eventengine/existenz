@@ -6,7 +6,12 @@ var Projects = new Schema({
 	meta:{ 
 		last_modified: { type: Date, default: Date.now },
 		projectname: String,
-		admin: String,
+		admin: {
+			username: String,
+			firstname: String,
+			lastname: String,
+			email : String	
+		},
 		hdwallet: String
 	},
 	profile:{

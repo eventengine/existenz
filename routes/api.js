@@ -23,8 +23,17 @@ exports.createProject = function (req, res) {
 			   // think about a redirect instead
 			   res.redirect('myprojects');
 		   };
-		   var project_data = {};
-		   project_data.projectname = "test_project";
+		   var project_data = {
+				projectname: req.body.projectname || "new_project",
+				description: req.body.description || "",
+				firstname: req.body.firstname || "No Name",
+				lastname: req.body.lastname,
+				email: req.body.email || "",
+				website: req.body.website || ""			
+		   };
+		   if (typeof project_data === 'string') {
+			   project_data = JSON.parse(project_data);
+		   }
 		   api.createProject(req.user.username, project_data, body.result, _fb); 
 		};
 		

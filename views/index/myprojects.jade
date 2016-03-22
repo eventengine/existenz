@@ -40,9 +40,47 @@ html
       .panel-heading 
         h3 Dev Box for My Projects:
       .panel-body
-        h4 Here will go all development for my projects (user projects and all relevent info about your Existenz projects wallet)
+       h4 Here will go all development for my projects (user projects and all relevent info about your Existenz projects wallet)
+       br
+       .col-sm-6
+        form#createproject(role='form', action="/createproject",method="post", style='max-width: 300px;')
+          h4 Create a new project
+          .form-group
+            label(for='firstname') First name
+            input#firstname.form-control(type='text', name="firstname", placeholder='First name')
+          .form-group
+            label(for='lastname') Last name
+            input#lastname.form-control(type='text', name="lasttname", placeholder='Last name')
+          .form-group
+            label(for='email')
+              | Email address 
+              span(style='color:red;') *
+            input#email.form-control(type='email', name="email", placeholder='Enter email')
+          .form-group
+            label(for='projectnamel')
+              | Project Name 
+              span(style='color:red;') *
+            input#projectname.form-control(type='text', name="projectname", placeholder='Project Name')
+          .form-group
+            label(for='description')
+              | Short Description 
+              span(style='color:red;') *
+            input#description.form-control(type='textarea', name="description", placeholder='Enter Description here')
+          .form-group
+            label(for='website') Website or Landing Page
+            input#lastname.form-control(type='text', name="website", placeholder='Website')
+          .form-group
+            span.text-muted
+              em
+                span(style='color:red;') *
+                |  Indicates required field
+          button.btn.btn-default(type='submit') Create Project
+          &nbsp;
+          a(href='/myprojects')
+            button.btn.btn-primary(type="button") Cancel
+       .col-sm-6
+        h4 My Project
         br
-        button.btn.btn-primary(type='button', onclick="window.location.href='/createproject'") Create a New Project
         hr
         b My project name:
         hr
@@ -66,3 +104,4 @@ html
     script(src='/js/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')
+    script(src='/js/utils.js')
