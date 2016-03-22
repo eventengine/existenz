@@ -17,7 +17,8 @@ module.exports = function (app) {
 	//Main routes
 	///////////////////////////
 	app.get('/', index.index);
-	
+	app.get('/mywallet', index.mywallet);	
+	app.get('/myprojects', index.myprojects);
 	// Colu-Api Routes
 	/////////////////////////////
 	app.get('/getPrivateSeed', api.getPrivateSeed);

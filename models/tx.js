@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var Txs = new Schema({
 	meta:{ 
 		server_private_seed: String,
-		date: Date,
+		date: { type: Date, default: Date.now },
 		confirmed: Boolean
 	},
 	tx:{		    

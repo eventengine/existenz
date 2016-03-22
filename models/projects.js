@@ -4,13 +4,13 @@ var Schema = mongoose.Schema;
 
 var Projects = new Schema({
 	meta:{ 
-		last_modified: Date,
+		last_modified: { type: Date, default: Date.now },
 		projectname: String,
 		admin: String,
 		hdwallet: String
 	},
 	profile:{
-		last_modified: Date,
+		last_modified: { type: Date, default: Date.now },
 		header:{ 
 			banner_url: String,
 			title: String
