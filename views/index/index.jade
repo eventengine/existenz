@@ -16,12 +16,21 @@ html
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
   body
     nav.navbar.navbar-default.navbar-static-top
-      .container-fluid
-       h3 Node.js Equity Crowdfunding platform on the blockchain
-       p Here will go the dev platform 
-       a(href='login') Login
-       &nbsp&nbsp
-       a(href='register') Register
+     .table-responsive
+       table.table
+         tr
+           td 
+            h3 Node.js Equity Crowdfunding platform on the blockchain
+            p Here will go the dev platform 
+           td
+            .container-fluid
+             a(href='login') Login
+             &nbsp&nbsp
+             a(href='register') Register
+         tr
+           td 
+            if username
+             i=username
      
     .panel.panel-default
       .panel-heading 

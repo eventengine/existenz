@@ -9,8 +9,13 @@ var mongoose = require('mongoose');
 
 
 exports.index = function (req, res) {
+	var username = "Not logged in";
+    if(req.user) {
+    	username = req.user.username;
+    }
     var data = {
-        title: " Existenz - Equity Crowdfunding on the Blockchain"
+        title: " Existenz - Equity Crowdfunding on the Blockchain",
+        username: username
     };
     res.render('index/index', data);
 };
