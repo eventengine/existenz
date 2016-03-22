@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var morgan      = require('morgan');
 var request = require('request');
 var Server = require('../models/server');
-
+var Projects = require('../models/projects');
 // Each call to colu api will be done througth the api object 
 // and will fire a callback if succesful or an errback if failed 
 // (useful for transaction were you want to be able to delete the transaction if it failed)
@@ -42,6 +42,37 @@ module.exports= {
 // and action that must be canceled or something like that
 console.log("colu answered with an error : "+err);
 errback("colu answered with an error : "+err);
+},
+"createProject": function(username, project_data, wallet_adress, callback){
+	// create a sample project
+	var project = new Projects({
+		meta:{ 
+		projectname: project_data.projectname,
+		admin: username,
+		hdwallet: wallet_adress
+	},
+	profile:{
+		header:{ 
+			banner_url: "",
+			title: project_data.projectname
+			},
+		body:{
+			website: "",
+			description: ""					
+			},
+		footer: {
+			copyrigth: ""
+			}
+	},
+	admins:{
+		admin: [username]
+	}
+		});	
+	project.save(function(err,_id) {
+		if (err) throw err;
+		console.log("Project was created. Name: "+ project_data.projectname+ " Admin : "+username);
+	});	
+	callback();
 },
 "getServer": function(server_name, callback){
 	var private_seed ="";

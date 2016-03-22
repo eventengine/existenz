@@ -7,6 +7,35 @@
 var request = require('request');
 var api   = require('../scripts/coluApi-client.js'); // get our colu-api method library
 
+exports.createProject = function (req, res) {
+    console.log("createProject initiated..");
+	var username = "Not logged in";
+    if(req.user) {
+    	username = req.user.username;
+    }else{
+    	res.redirect('/');
+    }
+	var _cb = function(err, body){
+		if (err) console.log('error: ',err);				
+		   console.log("GetAdress for Create Projects body : "+JSON.stringify(body.result));
+		   // Create the project with a new assigned hdwallet address
+		   var _fb = function(){
+			   // think about a redirect instead
+			   res.redirect('myprojects');
+		   };
+		   var project_data = {};
+		   project_data.projectname = "test_project";
+		   api.createProject(req.user.username, project_data, body.result, _fb); 
+		};
+		
+		var json_data = {
+			  jsonrpc: "2.0", // mandatory			    
+			  method: "hdwallet.getAddress",
+			  // mandatory
+			  id: "1" // mandatory if response is needed
+			};
+		api.postToApi('', json_data, _cb);       
+};
 
 exports.getPrivateSeed = function (req, res) {
     console.log("getPrivateSeed initiated..");
