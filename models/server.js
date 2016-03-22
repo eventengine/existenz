@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var Server = new Schema({
+	server_name: String,
 	meta:{ 
 		private_seed: String,
 		hdwallet: String

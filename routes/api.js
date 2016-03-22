@@ -10,11 +10,16 @@ var api   = require('../scripts/coluApi-client.js'); // get our colu-api method 
 
 exports.getPrivateSeed = function (req, res) {
     console.log("getPrivateSeed initiated..");
+	var username = "Not logged in";
+    if(req.user) {
+    	username = req.user.username;
+    }
 	var _cb = function(err, body){
 		if (err) console.log('error: ',err);
 	    var data = {
 	            title: " Existenz - Equity Crowdfunding on the Blockchain",
-	            coluPrivateSeed : body.result
+	            coluPrivateSeed : body.result,
+	            username : username
 	        };				
 		   console.log("GetPrivateSeed body : "+JSON.stringify(body.result));
 		   // think about a redirect instead
@@ -30,13 +35,19 @@ exports.getPrivateSeed = function (req, res) {
 		}
 		api.postToApi('', json_data, _cb);       
 };
+
 exports.getAdress = function(req, res){
     console.log("GetAdress initiated..");
+	var username = "Not logged in";
+    if(req.user) {
+    	username = req.user.username;
+    }
 	var _cb = function(err, body){
 		if (err) console.log('error: ',err);
 	    var data = {
 	            title: " Existenz - Equity Crowdfunding on the Blockchain",
-	            colugetAdress : body.result
+	            colugetAdress : body.result,
+	            username : username
 	        };				
 		   console.log("GetAdress body : "+JSON.stringify(body.result));
 		   // think about a redirect instead
@@ -53,6 +64,7 @@ exports.getAdress = function(req, res){
 
 		api.postToApi('', json_data, _cb);
 };
+
 exports.issueAsset = function (req, res){
 	// Form POST will need args:(in req.body)
 	// amount
@@ -61,11 +73,16 @@ exports.issueAsset = function (req, res){
 	// transfer(int amount)
 	// all metadata 
     console.log("issueAsset initiated..");
+	var username = "Not logged in";
+    if(req.user) {
+    	username = req.user.username;
+    }    
 	var _cb = function(err, body){
 		if (err) console.log('error: ',err);
 	    var data = {
 	            title: " Existenz - Equity Crowdfunding on the Blockchain",
-	            coluIssueAssetResults : JSON.stringify(body.result)
+	            coluIssueAssetResults : JSON.stringify(body.result),
+	            username : username
 	        };				
 		   console.log("GetAdress body : "+JSON.stringify(body.result));
 		   // think about a redirect instead
@@ -109,6 +126,10 @@ exports.issueAsset = function (req, res){
 
 exports.sendAsset = function (req, res){
     console.log("sendAsset initiated..");
+	var username = "Not logged in";
+    if(req.user) {
+    	username = req.user.username;
+    } 
     // test adress 
     var address = "mx8vKfuhj2vWaNd7xzMK3F7uJKoF32HQu6";
     var address1 = "mmLd3FMKq7LwmxbU6UPWeyoXgYx6TStdyq";
@@ -117,7 +138,8 @@ exports.sendAsset = function (req, res){
 		if (err) console.log('error: ',err);
 	    var data = {
 	            title: " Existenz - Equity Crowdfunding on the Blockchain",
-	            coluSendAssetResults  : JSON.stringify(body.result)
+	            coluSendAssetResults  : JSON.stringify(body.result),
+	            username : username
 	        };				
 		   console.log("sendAsset body : "+JSON.stringify(body.result));
 		   // think about a redirect instead
