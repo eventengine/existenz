@@ -1,0 +1,57 @@
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    title= title
+    // Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', integrity='sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==', crossorigin='anonymous')
+    // Fontaswam
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', integrity='sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU=sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==', crossorigin='anonymous')
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  body
+    nav.navbar.navbar-default.navbar-static-top
+     .table-responsive
+       table.table
+         tr
+           td 
+            h3 Node.js Equity Crowdfunding platform on the blockchain
+            p Here will go the dev platform 
+           td
+            .container-fluid
+             a(href='/') Go back
+         tr
+           td 
+            if username
+             i=username
+            br
+            if server_name
+             b=server_name
+            br
+            if private_seed
+             i=private_seed
+     
+    .panel.panel-default
+      .panel-heading 
+        h3 Dev Box for My Wallet:
+      .panel-body
+        h4 Here will go all development for my wallet (user assets and all relevent info about your Existenz wallet)
+        hr
+        b My hdwallet Adress:
+        hr
+        b My assets:
+        hr
+        p For each asset it will need to display, amount, unit value, unit total/unit left, net worth of your assets shares
+        b My total net worth on Existenz:
+        hr
+        h4 My transactions historics:
+
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='/js/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='/js/bootstrap.min.js')
