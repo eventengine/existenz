@@ -8,9 +8,24 @@ var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
 var Server = require('../models/server');
 var Projects = require('../models/projects');
+var Users = require('../models/users');
 
 module.exports= {
-
+"getWallet": function(username, callback){
+	var data = {};
+	Users.findOne({
+		username: username
+	},function(err, user) {
+        data.hdwallet = user.meta.hdwallet;
+        // for all assets which the user has share in , display
+		for (i = 0; i < user.meta.assets.length; i++) {
+			data.assets.push(user.meta.assets);
+			data.asset_name[i].push(user.meta.assets.asset_name);
+		}
+		// will add more data here
+		callback(data);
+	});	
+},
 "getMyProject": function(username, callback){
 	var data = {};
 	var response = [];

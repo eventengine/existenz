@@ -50,13 +50,18 @@ exports.mywallet = function (req, res) {
     // if server is not existant create it
 	
 	var _cb = function(body){
-    var data = {
-            title: " Existenz - My Wallet",
-            username: username,
-            private_seed : body.private_seed,
-            server_name : body.server_name
-        };
-        res.render('index/mywallet', data);
+		var _fb = function(response){
+		    var data = {
+		            title: " Existenz - My Wallet",
+		            username: username,
+		            private_seed : body.private_seed,
+		            server_name : body.server_name,
+		            hdwallet: response.hdwallet
+		        };
+		        res.render('index/mywallet', data);		
+		};
+		// fetch the html snippet for th current user in mywallet page
+        htmlfactory.getWallet(username, _fb);   
 	};
 	api.getServer(server_name, _cb);
 };

@@ -75,8 +75,8 @@ module.exports = function (app) {
                // and attribute a hdwallet address to the user
                var _cb = function(err, response){
                    var user = new Users({
+         			username: req.body.username,
                		meta:{ 
-              				username: req.body.username,
               				password: req.body.password,
               				hdwallet: response.result // get a hdwallet adress
               				},
