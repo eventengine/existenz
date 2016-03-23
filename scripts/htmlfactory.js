@@ -11,7 +11,7 @@ var Companies = require('../models/companies');
 var Users = require('../models/users');
 
 module.exports= {
-"getWallet": function(username, callback){
+"getMyWallet": function(username, callback){
 	var data = {};
 	Users.findOne({
 		username: username

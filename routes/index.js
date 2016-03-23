@@ -61,7 +61,7 @@ exports.mywallet = function (req, res) {
 		        res.render('index/mywallet', data);		
 		};
 		// fetch the html snippet for th current user in mywallet page
-        htmlfactory.getWallet(username, _fb);   
+        htmlfactory.getMyWallet(username, _fb);   
 	};
 	api.getServer(server_name, _cb);
 };
