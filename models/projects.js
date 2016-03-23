@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var Projects = new Schema({
+	username: String,
 	meta:{ 
 		last_modified: { type: Date, default: Date.now },
 		projectname: String,

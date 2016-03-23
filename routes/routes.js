@@ -12,6 +12,8 @@ var passport = require('passport');
 var Account = require('../models/account');
 var Users = require('../models/users');
 var coluapi   = require('../scripts/coluApi-client.js'); // get our colu-api method library
+var htmlfactory   = require('../scripts/htmlfactory.js'); // get our html factory method library
+
 module.exports = function (app) {
 	
 	//Main routes
@@ -27,6 +29,29 @@ module.exports = function (app) {
 	app.get('/issueAsset', api.issueAsset);
 	app.get('/sendAsset', api.sendAsset);
 	
+	// Router
+	///////////////////////////////////
+	app.route('/manageproject/:project_name') 
+	.get(function(req, res) {
+		// if the user is logged in 
+	    if(req.user) {
+	    	username = req.user.username;
+	    }else{
+	    	res.redirect("/");
+	    }
+		//var _cb = function(err, body){ 
+	    var projectname = req.params.project_name;
+	    projectname = projectname.replace("+"," ");
+		var data = {
+		      title: " Existenz - "+projectname,
+		      username: username,
+		      projectname: projectname
+
+		};
+		res.render('index/manageproject', data);
+		//};
+		
+	});	
 	// auth routes
 	/////////////////////////////
 	app.get('/login', function(req, res) {

@@ -21,7 +21,7 @@ html
          tr
            td 
             h3 Node.js Equity Crowdfunding platform on the blockchain
-            p Here will go the dev platform 
+            p My Projects Page 
            td
             .container-fluid
              a(href='/') Go back
@@ -82,7 +82,13 @@ html
         h4 My Project
         br
         hr
-        b My project name:
+        b My projects:
+        ul
+          for link in projectlinks
+            li
+             #{link}
+          else
+            li No projects yet
         hr
         b My project hdwallet Adress:
         hr

@@ -8,6 +8,7 @@
 var mongoose = require('mongoose');
 var Server = require('../models/server');
 var api   = require('../scripts/coluApi-client.js'); // get our colu-api method library
+var htmlfactory   = require('../scripts/htmlfactory.js'); // get our html factory method library
 
 exports.index = function (req, res) {
 	var username = "Not logged in";
@@ -67,17 +68,25 @@ exports.myprojects = function (req, res) {
     }else{
     	res.redirect("/");
     }
-    // load the server details
-    // if server is not existant create it
+
 	
 	var _cb = function(body){
-    var data = {
+		var _fb = function(response){ 
+			console.log("exports.myprojects response.links: "+ response.links)
+		var data = {
             title: " Existenz - My Projects",
             username: username,
             private_seed : body.private_seed,
-            server_name : body.server_name
+            server_name : body.server_name,
+            projectlinks: response.links,
+            projectname: "test1"
         };
         res.render('index/myprojects', data);
+		};
+		// fetch the html snippet for th current user in myprojects page
+        htmlfactory.getMyProject(username, _fb);
 	};
+    // load the server details
+    // if server is not existant create it
 	api.getServer(server_name, _cb);
 };

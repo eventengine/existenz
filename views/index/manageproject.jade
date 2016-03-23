@@ -21,37 +21,51 @@ html
          tr
            td 
             h3 Node.js Equity Crowdfunding platform on the blockchain
-            p My Wallet Page 
+            p Project Page
            td
             .container-fluid
-             a(href='/') Go back
+             a(href='/') Go home
+             &nbsp&nbsp
+             a(href='/myprojects') My Projects
          tr
            td 
             if username
              i=username
-            br
-            if server_name
-             b=server_name
-            br
-            if private_seed
-             i=private_seed
+
      
     .panel.panel-default
       .panel-heading 
-        h3 Dev Box for My Wallet:
+       h4 Project Name 
+        if projectname
+         h4=projectname
       .panel-body
-        h4 Here will go all development for my wallet (user assets and all relevent info about your Existenz wallet)
+       h4 Description  
+        if description
+         h4=description
         hr
-        b My hdwallet Adress:
+        h4 My Project
+        br
         hr
-        b My assets:
+        b My project name:
         hr
-        p For each asset it will need to display, amount, unit value, unit total/unit left, net worth of your assets shares
-        b My total net worth on Existenz:
+        b My project hdwallet Adress:
         hr
-        h4 My transactions historics:
+        b My project asset:
+        hr
+        b Project total worth:
+        hr
+        p Project unit share total:
+        hr
+        p Project unit share left:
+        hr
+        p Project unit shares value:
+        hr
+        p Total project unit shares value:
+        hr
+        h4 My project transactions historics:
 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')
+    script(src='/js/utils.js')

@@ -47,6 +47,7 @@ errback("colu answered with an error : "+err);
 	// create a sample project
 	console.log("Create Project received project_data: "+JSON.stringify(project_data));
 	var project = new Projects({
+		username: username,
 		meta:{ 
 		projectname: project_data.projectname,
 		admin: {

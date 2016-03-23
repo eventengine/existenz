@@ -21,7 +21,8 @@ exports.createProject = function (req, res) {
 		   // Create the project with a new assigned hdwallet address
 		   var _fb = function(){
 			   // think about a redirect instead
-			   res.redirect('myprojects');
+			   //res.redirect('manageproject/'+req.body.projectname);
+			   res.redirect('myprojects/');
 		   };
 		   var project_data = {
 				projectname: req.body.projectname || "new_project",
@@ -34,7 +35,7 @@ exports.createProject = function (req, res) {
 		   if (typeof project_data === 'string') {
 			   project_data = JSON.parse(project_data);
 		   }
-		   api.createProject(req.user.username, project_data, body.result, _fb); 
+		   api.createProject(username, project_data, body.result, _fb); 
 		};
 		
 		var json_data = {
