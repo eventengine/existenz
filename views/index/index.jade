@@ -24,23 +24,24 @@ html
             p Here will go the dev platform 
            td
             .container-fluid
-             a(href='myprojects') My Projects
-             &nbsp&nbsp
-             a(href='mywallet') My Wallet
-             &nbsp&nbsp&nbsp&nbsp
-             a(href='login') Login
-             &nbsp&nbsp
-             a(href='register') Register
-         tr
-           td 
-            if username
-             i=username
-            br
-            if server_name
-             b=server_name
-            br
-            if private_seed
-             i=private_seed
+             if isAlreadyLoggedin
+               a(href='myprojects') My Projects
+               &nbsp&nbsp
+               a(href='mywallet') My Wallet
+               &nbsp&nbsp&nbsp&nbsp
+             else 
+               a(href='login') Login
+               &nbsp&nbsp
+               a(href='register') Register
+             br
+             if username
+              i Username: #{username}
+             br
+             if server_name
+              b Server: #{server_name}
+             br
+             if private_seed
+              i Current server private seed: #{private_seed}
      
     .panel.panel-default
       .panel-heading 

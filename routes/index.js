@@ -14,9 +14,11 @@ exports.index = function (req, res) {
 	var username = "Not logged in";
 	var private_seed = "";
 	var server_name = "test_server";
+	var isAlreadyLoggedin = false;
 	// if the user is logged in 
     if(req.user) {
     	username = req.user.username;
+    	isAlreadyLoggedin = true;
     }
     // load the server details
     // if server is not existant create it
@@ -26,7 +28,8 @@ exports.index = function (req, res) {
             title: " Existenz - Equity Crowdfunding on the Blockchain",
             username: username,
             private_seed : body.private_seed,
-            server_name : body.server_name
+            server_name : body.server_name,
+            isAlreadyLoggedin:isAlreadyLoggedin
         };
         res.render('index/index', data);
 	};
