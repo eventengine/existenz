@@ -37,13 +37,16 @@ html
      
     .panel.panel-default
       .panel-heading 
-       h4 Project Name 
         if projectname
-         h4=projectname
+         h4 Project Name: #{projectname}
+        else
+         h4 Project Name 
       .panel-body
-       h4 Description  
+ 
         if description
-         h4=description
+         h4 Description: #{description}
+        esle
+         h4 Description:  
         hr
         h4 My Project
         br

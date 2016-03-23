@@ -39,18 +39,23 @@ module.exports = function (app) {
 	    }else{
 	    	res.redirect("/");
 	    }
-		//var _cb = function(err, body){ 
 	    var projectname = req.params.project_name;
-	    projectname = projectname.replace("+"," ");
-		var data = {
-		      title: " Existenz - "+projectname,
-		      username: username,
-		      projectname: projectname
-
-		};
+		//var _cb = function(err, body){ 
+	    var _fb = function(isAuthorized){	
+	    if(isAuthorized){ 
+	    	projectname = projectname.replace("+"," ");
+	    	var data = {
+	    		title: " Existenz - "+projectname,
+	    		username: username,
+	    		projectname: projectname
+	    	};
 		res.render('index/manageproject', data);
+	    }else{
+	    	res.redirect('myprojects');
+	    }
+	    }
 		//};
-		
+		coluapi.checkProjectIfAdmin(req.params.project_name, username, _fb);
 	});	
 	// auth routes
 	/////////////////////////////
@@ -78,7 +83,8 @@ module.exports = function (app) {
          			username: req.body.username,
                		meta:{ 
               				password: req.body.password,
-              				hdwallet: response.result // get a hdwallet adress
+              				hdwallet: response.result, // get a hdwallet adress
+              				assets:[]
               				},
               			profile:{
               				avatar_url: "",

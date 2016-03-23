@@ -48,15 +48,17 @@ errback("colu answered with an error : "+err);
 	console.log("Create Project received project_data: "+JSON.stringify(project_data));
 	var project = new Projects({
 		username: username,
+		projectname: project_data.projectname,		
 		meta:{ 
-		projectname: project_data.projectname,
 		admin: {
 			username: username,
 			firstname: project_data.firstname,
 			lastname: project_data.lastname,
-			email : project_data.email
+			email : project_data.email,
+			administrators: [username]
 		},
-		hdwallet: wallet_adress
+		hdwallet: wallet_adress,
+		asset: []
 	},
 	profile:{
 		header:{ 
@@ -114,6 +116,19 @@ errback("colu answered with an error : "+err);
 		callback(response);
 	});
 
+},
+"checkProjectIfAdmin": function(projectname, username, callback){
+	response = false;
+	Projects.findOne({
+		projectname: projectname
+	},function(err, project) {
+		for (i = 0; i < project.meta.admin.administrators.length; i++) {
+			if (project.meta.admin.administrators == username){
+				response = true;
+			}
+		}
+		callback(response);
+	});
 },
 "coluapi_object_method" : function (arg1, arg2, callback, errback){
 

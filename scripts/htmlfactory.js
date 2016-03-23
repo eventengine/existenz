@@ -33,7 +33,7 @@ module.exports= {
 		username: username
 	},function(err, projects) {
 		for (i = 0; i < projects.length; i++) {
-			var link = 'a href="manageproject/'+projects[i].meta.projectname.replace(" ","+")+'">'+projects[i].meta.projectname+'</a';
+			var link = 'a href="manageproject/'+projects[i].projectname.replace(" ","+")+'">'+projects[i].projectname+'</a';
 			response.push(link);
 		}
 		data.links =response;
