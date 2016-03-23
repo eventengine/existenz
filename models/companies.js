@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var Projects = new Schema({
+var Companies = new Schema({
 	username: String,
-	projectname: String,
+	companyname: String,
 	meta:{ 
 		last_modified: { type: Date, default: Date.now },
 		admin: {
@@ -34,4 +34,4 @@ var Projects = new Schema({
 	}
 });
 
-module.exports = mongoose.model('projects', Projects);
+module.exports = mongoose.model('companies', Companies);

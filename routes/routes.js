@@ -20,10 +20,10 @@ module.exports = function (app) {
 	///////////////////////////
 	app.get('/', index.index);
 	app.get('/mywallet', index.mywallet);	
-	app.get('/myprojects', index.myprojects);
+	app.get('/mycompanies', index.mycompanies);
 	// Colu-Api Routes
 	/////////////////////////////
-	app.post('/createproject', api.createProject);
+	app.post('/createCompany', api.createCompany);
 	app.get('/getPrivateSeed', api.getPrivateSeed);
 	app.get('/getAdress', api.getAdress);
 	app.get('/issueAsset', api.issueAsset);
@@ -31,7 +31,7 @@ module.exports = function (app) {
 	
 	// Router
 	///////////////////////////////////
-	app.route('/manageproject/:project_name') 
+	app.route('/managecompany/:company_name') 
 	.get(function(req, res) {
 		// if the user is logged in 
 	    if(req.user) {
@@ -39,23 +39,23 @@ module.exports = function (app) {
 	    }else{
 	    	res.redirect("/");
 	    }
-	    var projectname = req.params.project_name;
+	    var companyname = req.params.company_name;
 		//var _cb = function(err, body){ 
 	    var _fb = function(isAuthorized){	
 	    if(isAuthorized){ 
-	    	projectname = projectname.replace("+"," ");
+	    	companyname = companyname.replace("+"," ");
 	    	var data = {
-	    		title: " Existenz - "+projectname,
+	    		title: " Existenz - "+companyname,
 	    		username: username,
-	    		projectname: projectname
+	    		companyname: companyname
 	    	};
-		res.render('index/manageproject', data);
+		res.render('index/managecompany', data);
 	    }else{
-	    	res.redirect('myprojects');
+	    	res.redirect('mycompanies');
 	    }
 	    }
 		//};
-		coluapi.checkProjectIfAdmin(req.params.project_name, username, _fb);
+		coluapi.checkProjectIfAdmin(req.params.company_name, username, _fb);
 	});	
 	// auth routes
 	/////////////////////////////

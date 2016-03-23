@@ -7,7 +7,7 @@
 var request = require('request');
 var api   = require('../scripts/coluApi-client.js'); // get our colu-api method library
 
-exports.createProject = function (req, res) {
+exports.createCompany = function (req, res) {
     console.log("createProject initiated..");
 	var username = "Not logged in";
     if(req.user) {
@@ -17,17 +17,17 @@ exports.createProject = function (req, res) {
     }
 	var _cb = function(err, body){
 		if (err) console.log('error: ',err);				
-		   console.log("GetAdress for Create Projects body : "+JSON.stringify(body.result));
+		   console.log("GetAdress for Create Company body : "+JSON.stringify(body.result));
 		   // Create the project with a new assigned hdwallet address
 		   var _fb = function(){
 			   // think about a redirect instead
 			   //res.redirect('manageproject/'+req.body.projectname);
-			   res.redirect('myprojects/');
+			   res.redirect('mycompanies/');
 		   };
-		   var project_data = {
-				projectname: req.body.projectname || "new_project",
+		   var company_data = {
+				companyname: req.body.companyname || "No Name",
 				description: req.body.description || "",
-				firstname: req.body.firstname || "No Name",
+				firstname: req.body.firstname || "John Doe",
 				lastname: req.body.lastname,
 				email: req.body.email || "",
 				website: req.body.website || ""			
@@ -35,7 +35,7 @@ exports.createProject = function (req, res) {
 		   if (typeof project_data === 'string') {
 			   project_data = JSON.parse(project_data);
 		   }
-		   api.createProject(username, project_data, body.result, _fb); 
+		   api.createCompany(username, company_data, body.result, _fb); 
 		};
 		
 		var json_data = {

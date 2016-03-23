@@ -7,7 +7,7 @@
 var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
 var Server = require('../models/server');
-var Projects = require('../models/projects');
+var Companies = require('../models/companies');
 var Users = require('../models/users');
 
 module.exports= {
@@ -29,11 +29,11 @@ module.exports= {
 "getMyProject": function(username, callback){
 	var data = {};
 	var response = [];
-	Projects.find({
+	Companies.find({
 		username: username
 	},function(err, projects) {
 		for (i = 0; i < projects.length; i++) {
-			var link = 'a href="manageproject/'+projects[i].projectname.replace(" ","+")+'">'+projects[i].projectname+'</a';
+			var link = 'a href="managecompany/'+projects[i].companyname.replace(" ","+")+'">'+projects[i].companyname+'</a';
 			response.push(link);
 		}
 		data.links =response;
@@ -42,8 +42,8 @@ module.exports= {
 	});
 },
 "getProjectProfile": function(projectname, callback){
-	Projects.findOne({
-		projectname: projectname
+	Companies.findOne({
+		companyname: projectname
 	},function(err, project) {
 		
 	});

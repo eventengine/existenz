@@ -66,30 +66,27 @@ exports.mywallet = function (req, res) {
 	api.getServer(server_name, _cb);
 };
 
-exports.myprojects = function (req, res) {
+exports.mycompanies = function (req, res) {
 	var username = "Not logged in";
 	var private_seed = "";
-	var server_name = "test_server";
+	var server_name = "No server loaded";
 	// if the user is logged in 
     if(req.user) {
     	username = req.user.username;
     }else{
     	res.redirect("/");
     }
-
-	
 	var _cb = function(body){
 		var _fb = function(response){ 
 			console.log("exports.myprojects response.links: "+ response.links)
 		var data = {
-            title: " Existenz - My Projects",
+            title: " Existenz - My Companies",
             username: username,
             private_seed : body.private_seed,
             server_name : body.server_name,
-            projectlinks: response.links,
-            projectname: "test1"
+            projectlinks: response.links
         };
-        res.render('index/myprojects', data);
+        res.render('index/mycompanies', data);
 		};
 		// fetch the html snippet for th current user in myprojects page
         htmlfactory.getMyProject(username, _fb);

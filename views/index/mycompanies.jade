@@ -21,7 +21,7 @@ html
          tr
            td 
             h3 Node.js Equity Crowdfunding platform on the blockchain
-            p My Projects Page 
+            p My Companies Page 
            td
             .container-fluid
              a(href='/') Go back
@@ -39,11 +39,11 @@ html
      
     .panel.panel-default
       .panel-heading 
-        h3 My Projects:
+        h3 My Companies:
       .panel-body
        .col-sm-6
-        form#createproject(role='form', action="/createproject",method="post", style='max-width: 300px;')
-          h4 Create a new project
+        form#createproject(role='form', action="/createCompany",method="post", style='max-width: 300px;')
+          h4 Create a new Company
           .form-group
             label(for='firstname') First name
             input#firstname.form-control(type='text', name="firstname", placeholder='First name')
@@ -56,10 +56,10 @@ html
               span(style='color:red;') *
             input#email.form-control(type='email', name="email", placeholder='Enter email')
           .form-group
-            label(for='projectnamel')
-              | Project Name 
+            label(for='companyname')
+              | Company Name 
               span(style='color:red;') *
-            input#projectname.form-control(type='text', name="projectname", placeholder='Project Name')
+            input#companyname.form-control(type='text', name="companyname", placeholder='Company Name')
           .form-group
             label(for='description')
               | Short Description 
@@ -78,10 +78,10 @@ html
           a(href='/myprojects')
             button.btn.btn-primary(type="button") Cancel
        .col-sm-6
-        h4 My Project
+        h4 My Companies:
         br
         hr
-        b My projects:
+        b List of companies:
         ul
           for link in projectlinks
             li
@@ -89,21 +89,21 @@ html
           else
             li No projects yet
         hr
-        b My project hdwallet Adress:
+        b My company hdwallet Adress:
         hr
-        b My project asset:
+        b My company  asset:
         hr
-        b Project total worth:
+        b Company total worth:
         hr
-        p Project unit share total:
+        p Company unit share total:
         hr
-        p Project unit share left:
+        p Company unit share left:
         hr
-        p Project unit shares value:
+        p Company unit shares value:
         hr
-        p Total project unit shares value:
+        p Total company unit shares value:
         hr
-        h4 My project transactions historics:
+        h4 My company transactions historics:
 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')

@@ -21,12 +21,12 @@ html
          tr
            td 
             h3 Node.js Equity Crowdfunding platform on the blockchain
-            p Project Page
+            p Company Page
            td
             .container-fluid
              a(href='/') Go home
              &nbsp&nbsp
-             a(href='/myprojects') My Projects
+             a(href='/mycompanies') My Companies
              &nbsp&nbsp
              a(href='/mywallet') My Wallet
              br
@@ -37,37 +37,36 @@ html
      
     .panel.panel-default
       .panel-heading 
-        if projectname
-         h4 Project Name: #{projectname}
+        if companyname
+         h4 Company Name: #{companyname}
         else
-         h4 Project Name 
+         h4 Company Name 
       .panel-body
- 
         if description
          h4 Description: #{description}
         esle
          h4 Description:  
         hr
-        h4 My Project
+        h4 My Company Stats:
         br
         hr
-        b My project name:
+        b My Company name:
         hr
-        b My project hdwallet Adress:
+        b My Company hdwallet Adress:
         hr
-        b My project asset:
+        b My Company asset:
         hr
-        b Project total worth:
+        b Company total worth:
         hr
-        p Project unit share total:
+        p Company unit share total:
         hr
-        p Project unit share left:
+        p Company unit share left:
         hr
-        p Project unit shares value:
+        p Company unit shares value:
         hr
-        p Total project unit shares value:
+        p Total company's unit shares value:
         hr
-        h4 My project transactions historics:
+        h4 My Company transactions history:
 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')

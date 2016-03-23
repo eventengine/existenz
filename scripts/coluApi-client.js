@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var morgan      = require('morgan');
 var request = require('request');
 var Server = require('../models/server');
-var Projects = require('../models/projects');
+var Companies = require('../models/companies');
 // Each call to colu api will be done througth the api object 
 // and will fire a callback if succesful or an errback if failed 
 // (useful for transaction were you want to be able to delete the transaction if it failed)
@@ -43,18 +43,18 @@ module.exports= {
 console.log("colu answered with an error : "+err);
 errback("colu answered with an error : "+err);
 },
-"createProject": function(username, project_data, wallet_adress, callback){
+"createCompany": function(username, company_data, wallet_adress, callback){
 	// create a sample project
-	console.log("Create Project received project_data: "+JSON.stringify(project_data));
-	var project = new Projects({
+	console.log("Create Company received company_data: "+JSON.stringify(company_data));
+	var company = new Companies({
 		username: username,
-		projectname: project_data.projectname,		
+		companyname: company_data.companyname,		
 		meta:{ 
 		admin: {
 			username: username,
-			firstname: project_data.firstname,
-			lastname: project_data.lastname,
-			email : project_data.email,
+			firstname: company_data.firstname,
+			lastname: company_data.lastname,
+			email : company_data.email,
 			administrators: [username]
 		},
 		hdwallet: wallet_adress,
@@ -63,11 +63,11 @@ errback("colu answered with an error : "+err);
 	profile:{
 		header:{ 
 			banner_url: "",
-			title: project_data.projectname
+			title: company_data.companyname
 			},
 		body:{
-			website: project_data.website,
-			description: project_data.description					
+			website: company_data.website,
+			description: company_data.description					
 			},
 		footer: {
 			copyrigth: ""
@@ -77,9 +77,9 @@ errback("colu answered with an error : "+err);
 		admin: [username]
 	}
 		});	
-	project.save(function(err,_id) {
+	company.save(function(err,_id) {
 		if (err) throw err;
-		console.log("Project was created. Name: "+ project_data.projectname+ " Admin : "+username);
+		console.log("Project was created. Name: "+ company_data.companyname+ " Admin : "+username);
 	});	
 	callback();
 },
@@ -117,10 +117,10 @@ errback("colu answered with an error : "+err);
 	});
 
 },
-"checkProjectIfAdmin": function(projectname, username, callback){
+"checkProjectIfAdmin": function(companyname, username, callback){
 	response = false;
-	Projects.findOne({
-		projectname: projectname
+	Companies.findOne({
+		companyname: companyname
 	},function(err, project) {
 		for (i = 0; i < project.meta.admin.administrators.length; i++) {
 			if (project.meta.admin.administrators == username){
