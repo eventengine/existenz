@@ -36,74 +36,19 @@ html
              br
              if private_seed
               i Current server private seed: #{private_seed}
-     
-    .panel.panel-default
+    .container(style='font-size:1.5em;margin-left:15%;margin-right:15%;')     
+     button.btn.btn-primary(type="button", onclick="window.location='/newcompany'") Create a new Company  
+     br
+     .panel.panel-default(style='margin-top:2%;')
       .panel-heading 
-        h3 My Companies:
+        b My Companies:
       .panel-body
-       .col-sm-6
-        form#createproject(role='form', action="/createCompany",method="post", style='max-width: 300px;')
-          h4 Create a new Company
-          .form-group
-            label(for='firstname') First name
-            input#firstname.form-control(type='text', name="firstname", placeholder='First name')
-          .form-group
-            label(for='lastname') Last name
-            input#lastname.form-control(type='text', name="lasttname", placeholder='Last name')
-          .form-group
-            label(for='email')
-              | Email address 
-              span(style='color:red;') *
-            input#email.form-control(type='email', name="email", placeholder='Enter email')
-          .form-group
-            label(for='companyname')
-              | Company Name 
-              span(style='color:red;') *
-            input#companyname.form-control(type='text', name="companyname", placeholder='Company Name')
-          .form-group
-            label(for='description')
-              | Short Description 
-              span(style='color:red;') *
-            input#description.form-control(type='textarea', name="description", placeholder='Enter Description here')
-          .form-group
-            label(for='website') Website or Landing Page
-            input#lastname.form-control(type='text', name="website", placeholder='Website')
-          .form-group
-            span.text-muted
-              em
-                span(style='color:red;') *
-                |  Indicates required field
-          button.btn.btn-default(type='submit') Create Project
-          &nbsp;
-          a(href='/myprojects')
-            button.btn.btn-primary(type="button") Cancel
-       .col-sm-6
-        h4 My Companies:
-        br
-        hr
-        b List of companies:
         ul
           for link in projectlinks
             li
              #{link}
           else
-            li No projects yet
-        hr
-        b My company hdwallet Adress:
-        hr
-        b My company  asset:
-        hr
-        b Company total worth:
-        hr
-        p Company unit share total:
-        hr
-        p Company unit share left:
-        hr
-        p Company unit shares value:
-        hr
-        p Total company unit shares value:
-        hr
-        h4 My company transactions historics:
+            li No Companies on Existenz yet
 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')

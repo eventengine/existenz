@@ -95,3 +95,16 @@ exports.mycompanies = function (req, res) {
     // if server is not existant create it
 	api.getServer(server_name, _cb);
 };
+exports.newcompany = function (req, res) {
+	// if the user is logged in 
+    if(req.user) {
+    	username = req.user.username;
+    }else{
+    	res.redirect("/");
+    }
+	var data = {
+            title: " Existenz - Create a New Company",
+            username: username
+        };
+        res.render('index/newcompany', data);	
+};

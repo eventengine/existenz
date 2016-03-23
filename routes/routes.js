@@ -21,7 +21,7 @@ module.exports = function (app) {
 	app.get('/', index.index);
 	app.get('/mywallet', index.mywallet);	
 	app.get('/mycompanies', index.mycompanies);
-	
+	app.get('/newcompany', index.newcompany);	
 	// Colu-Api Routes
 	/////////////////////////////
 	app.post('/createCompany', api.createCompany);
@@ -68,7 +68,7 @@ module.exports = function (app) {
 		
 		coluapi.checkProjectIfAdmin(req.params.company_name, username, _fb);
 	});	
-	
+
 	// auth routes
 	/////////////////////////////
 	app.get('/login', function(req, res) {
