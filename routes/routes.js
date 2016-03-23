@@ -115,7 +115,6 @@ module.exports = function (app) {
 	        if (err) {
 	            return next(err);
 	        }
-	        res.locals.user = req.user || null;
 	        res.redirect('/');
 	    });
 	});
