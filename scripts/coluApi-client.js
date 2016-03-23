@@ -58,7 +58,7 @@ errback("colu answered with an error : "+err);
 			administrators: [username]
 		},
 		hdwallet: wallet_adress,
-		asset: []
+		asset: {}
 	},
 	profile:{
 		header:{ 

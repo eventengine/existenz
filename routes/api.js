@@ -8,7 +8,7 @@ var request = require('request');
 var api   = require('../scripts/coluApi-client.js'); // get our colu-api method library
 
 exports.createCompany = function (req, res) {
-    console.log("createProject initiated..");
+    console.log("createCompany initiated..");
 	var username = "Not logged in";
     if(req.user) {
     	username = req.user.username;

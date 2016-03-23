@@ -31,8 +31,16 @@ html
              a(href='/mywallet') My Wallet
              br
              if username
-              i Username: #{username}
-
+              b Username: #{username}
+             br
+             if adminfirstname
+              i Administrator First Name: #{adminfirstname} 
+             br           
+             if adminfirstname
+              i Administrator Last Name: #{adminlastname}
+             br
+             if adminemail
+              i Administrator Email: #{adminemail}
 
      
     .panel.panel-default
@@ -40,19 +48,22 @@ html
         if companyname
          h4 Company Name: #{companyname}
         else
-         h4 Company Name 
+         h4 Company Name:  
       .panel-body
         if description
-         h4 Description: #{description}
-        esle
-         h4 Description:  
+         b Description: #{description}
+        else
+         b Description:  
         hr
-        h4 My Company Stats:
-        br
+        if website
+         i Website: #{website}
+        else
+         i Website:  
         hr
-        b My Company name:
-        hr
-        b My Company hdwallet Adress:
+        if companyhdwallet
+         b Company's wallet adress: #{companyhdwallet}
+        else
+         b Company's wallet adress:
         hr
         b My Company asset:
         hr

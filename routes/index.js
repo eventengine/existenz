@@ -89,7 +89,7 @@ exports.mycompanies = function (req, res) {
         res.render('index/mycompanies', data);
 		};
 		// fetch the html snippet for th current user in myprojects page
-        htmlfactory.getMyProject(username, _fb);
+        htmlfactory.getMyCompanies(username, _fb);
 	};
     // load the server details
     // if server is not existant create it

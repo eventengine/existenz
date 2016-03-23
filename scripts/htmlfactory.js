@@ -26,7 +26,16 @@ module.exports= {
 		callback(data);
 	});	
 },
-"getMyProject": function(username, callback){
+"getMyCompany": function(companyname, callback){
+	var data = {};
+	Companies.findOne({
+		username: username
+	},function(err, company) {
+		data= company;			
+	callback(null, data);
+	});
+},
+"getMyCompanies": function(username, callback){
 	var data = {};
 	var response = [];
 	Companies.find({

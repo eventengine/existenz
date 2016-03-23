@@ -16,7 +16,7 @@ var Companies = new Schema({
 			
 		},
 		hdwallet: String,
-		asset: Array
+		asset: {}
 	},
 	profile:{
 		last_modified: { type: Date, default: Date.now },

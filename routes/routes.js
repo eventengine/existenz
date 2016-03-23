@@ -21,6 +21,7 @@ module.exports = function (app) {
 	app.get('/', index.index);
 	app.get('/mywallet', index.mywallet);	
 	app.get('/mycompanies', index.mycompanies);
+	
 	// Colu-Api Routes
 	/////////////////////////////
 	app.post('/createCompany', api.createCompany);
@@ -40,23 +41,34 @@ module.exports = function (app) {
 	    	res.redirect("/");
 	    }
 	    var companyname = req.params.company_name;
-		//var _cb = function(err, body){ 
 	    var _fb = function(isAuthorized){	
 	    if(isAuthorized){ 
+			var _cb = function(err, body){ 
+			console.log( "htmlfactory.getMyCompany(companyname, _cb) _cb responded with body: "+JSON.stringify(body));
 	    	companyname = companyname.replace("+"," ");
 	    	var data = {
-	    		title: " Existenz - "+companyname,
+	    		title: " Existenz - "+ companyname,
 	    		username: username,
-	    		companyname: companyname
+	    		companyname: companyname,
+	    		companyhdwallet: body.meta.hdwallet,
+	    		adminfirstname: body.meta.admin.firstname,
+	    		adminlastname: body.meta.admin.lastname,
+	    		adminemail: body.meta.admin.email,
+	    		description: body.meta.description,
+	    		website: body.profile.body.website,
+	    		lastmodified: body.meta.lastmodified
 	    	};
 		res.render('index/managecompany', data);
+		};
+        htmlfactory.getMyCompany(companyname, _cb);
 	    }else{
 	    	res.redirect('mycompanies');
 	    }
-	    }
-		//};
+	    };
+		
 		coluapi.checkProjectIfAdmin(req.params.company_name, username, _fb);
 	});	
+	
 	// auth routes
 	/////////////////////////////
 	app.get('/login', function(req, res) {
