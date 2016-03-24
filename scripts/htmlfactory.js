@@ -29,7 +29,7 @@ module.exports= {
 "getMyCompany": function(companyname, callback){
 	var data = {};
 	Companies.findOne({
-		username: username
+		companyname: companyname
 	},function(err, company) {
 		data= company;			
 	callback(null, data);
