@@ -22,7 +22,8 @@ module.exports = function (app) {
 	app.get('/', index.index);
 	app.get('/mywallet', index.mywallet);	
 	app.get('/mycompanies', index.mycompanies);
-	app.get('/newcompany', index.newcompany);	
+	app.get('/newcompany', index.newcompany);
+	app.get('/newasset', index.newasset);	
 	// Colu-Api Routes
 	/////////////////////////////
 	app.post('/createCompany', api.createCompany);

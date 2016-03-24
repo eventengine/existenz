@@ -20,16 +20,17 @@ html
        table.table
          tr
            td 
-            h3 Node.js Equity Crowdfunding platform on the blockchain
-            p Company Page
+            h2 Node.js Equity Crowdfunding platform on the blockchain
+            p Company Page for:
+            h4 #{companyname}
            td
-            .container-fluid
+            .container-fluid(style='padding-top:2%;font-size:1.4em;')
              a(href='/') Go home
              &nbsp&nbsp
              a(href='/mycompanies') My Companies
              &nbsp&nbsp
              a(href='/mywallet') My Wallet
-             br
+            .container-fluid
              if username
               b Username: #{username}
              br
@@ -41,33 +42,41 @@ html
              br
              if adminemail
               i Administrator Email: #{adminemail}
-
+              
     .container(style='font-size:1.5em;margin-left:15%;margin-right:15%;')     
-     .panel.panel-default
+     button.btn.btn-primary(type="button", onclick="window.location='/newasset'") Create #{companyname} Asset  
+     br
+     .panel.panel-default(style='margin-top:2%;')
+      .panel-heading 
+        if companyhdwallet
+         b Company wallet adress: 
+        else
+         b Company wallet adress:
+      .panel-body
+         p #{companyhdwallet} 
+     .panel.panel-default(style='margin-top:2%;')
       .panel-heading 
         if companyname
-         h4 Company Name: #{companyname}
+         p #{companyname} Details:
         else
-         h4 Company Name:  
+         p Company Details:  
       .panel-body
+        if companyname
+         p Name: #{companyname}
+        hr
         if description
-         b Description: #{description}
-        else
-         b Description:  
+         p Description: #{description}
         hr
         if website
-         i Website: #{website}
+         p Website: #{website}
         else
-         i Website:  
-        hr
-        if companyhdwallet
-         b Company's wallet adress: #{companyhdwallet}
-        else
-         b Company's wallet adress:
-        hr
+         p Website:  
+
+     .panel.panel-default(style='margin-top:2%;')
+      .panel-heading   
         b My Company asset:
-        hr
-        b Company total worth:
+      .panel-body
+        p Company total worth:
         hr
         p Company unit share total:
         hr
@@ -77,7 +86,7 @@ html
         hr
         p Total company's unit shares value:
         hr
-        h4 My Company transactions history:
+        p My Company transactions history:
 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')

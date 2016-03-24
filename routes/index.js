@@ -108,3 +108,16 @@ exports.newcompany = function (req, res) {
         };
         res.render('index/newcompany', data);	
 };
+exports.newasset = function (req, res) {
+	// if the user is logged in 
+    if(req.user) {
+    	username = req.user.username;
+    }else{
+    	res.redirect("/");
+    }
+	var data = {
+            title: " Existenz - Create a New Asset",
+            username: username
+        };
+        res.render('index/newasset', data);	
+};

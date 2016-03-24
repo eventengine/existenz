@@ -112,6 +112,7 @@ exports.issueAsset = function (req, res){
 	// transfer(int amount)
 	// all metadata 
     console.log("issueAsset initiated..");
+    console.log("issueAsset received req.body: "+rJSON.stringify(req.body));
 	var username = "Not logged in";
     if(req.user) {
     	username = req.user.username;

@@ -20,14 +20,14 @@ html
        table.table
          tr
            td 
-            h3 Node.js Equity Crowdfunding platform on the blockchain
+            h2 Node.js Equity Crowdfunding platform on the blockchain
             p My Wallet Page 
            td
-            .container-fluid
+            .container-fluid(style='padding-top:2%;font-size:1.4em;')
              a(href='/') Go back
              &nbsp&nbsp
              a(href='mycompanies') My Companies
-             br
+            .container-fluid
              if username
               b Username: #{username}
              br
@@ -40,18 +40,19 @@ html
     .container(style='font-size:1.5em;margin-left:15%;margin-right:15%;')     
      .panel.panel-default
       .panel-heading 
-        h3 My Wallet:
-      .panel-body
-        b My hdwallet Adress:  
+        h3 My Existenz Adress:
+      .panel-body 
         if hdwallet
          i= hdwallet
+     .panel.panel-default
+      .panel-heading 
+        h3 My assets:
+      .panel-body
+        b Asset name:
         hr
-        b My assets:
-        hr
-        p For each asset it will need to display, amount, unit value, unit total/unit left, net worth of your assets shares
         b My total net worth on Existenz:
         hr
-        h4 My transactions historics:
+        b My transactions historics:
 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='/js/jquery.min.js')

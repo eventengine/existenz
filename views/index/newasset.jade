@@ -14,40 +14,54 @@ html
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
   body
     .container
-      h2 Step 1 : Tell us about yourself
+      h2 Step 2 : Create your asset :
       hr
-      form#createproject(role='form', action="/createCompany",method="post", style='max-width: 400px;')
+      form#createasset(role='form', action="/issueAsset",method="post", style='max-width: 400px;')
           h3 Create a new Company
           .form-group
-            label(for='firstname') First name
-            input#firstname.form-control(type='text', name="firstname", placeholder='First name')
+            label(for='assetname') Asset name
+            input#assetname.form-control(type='text', name="assetname", placeholder='Asset name')
           .form-group
-            label(for='lastname') Last name
-            input#lastname.form-control(type='text', name="lasttname", placeholder='Last name')
+            label(for='divisibility') Asset divisibility
+            input#lastname.form-control(type='text', name="divisibility", placeholder='enter numer')
           .form-group
             label(for='email')
-              | Email address 
+              | Contact Email
               span(style='color:red;') *
-            input#email.form-control(type='email', name="email", placeholder='Enter email')
+            input#contactemail.form-control(type='email', name="contactemail", placeholder='Enter email')
           .form-group
-            label(for='companyname')
-              | Company Name 
+           label(for='divisibility') Divisibility
+           select#divisibility.form-control(name='divisibility')
+             option 0
+             option 1
+             option 2
+             option 3
+             option 4
+             option 5
+             option 6
+             option 7
+          .form-group
+           label(for='reissueable') Reissueable
+           select#reissueable.form-control(name='reissueable')
+             option true
+             option false
+          .form-group
+            label(for='Amount')
+              | Amount of total shares
               span(style='color:red;') *
-            input#companyname.form-control(type='text', name="companyname", placeholder='Company Name')
+            textarea#description.form-control(row=5, name="amount", placeholder='Enter the Amount Here')
           .form-group
-            label(for='description')
-              | Short Description 
-              span(style='color:red;') *
-            textarea#description.form-control(row=5, name="description", placeholder='Enter Description here')
+            label(for='description') Description
+            textarea#lastname.form-control(row=5, name="description", placeholder='Enter Description Here')
           .form-group
-            label(for='website') Website or Landing Page
-            input#lastname.form-control(type='text', name="website", placeholder='Website')
+            label(for='website') Icon
+            input#lastname.form-control(type='url', name="icon", placeholder='Enter Icon url Here')
           .form-group
             span.text-muted
               em
                 span(style='color:red;') *
                 |  Indicates required field
-          button.btn.btn-default(type='submit') Create Project
+          button.btn.btn-default(type='submit') Issue Asset
           &nbsp;
           a(href='/mycompanies')
             button.btn.btn-primary(type="button") Cancel

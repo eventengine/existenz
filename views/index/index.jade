@@ -20,10 +20,10 @@ html
        table.table
          tr
            td 
-            h3 Node.js Equity Crowdfunding platform on the blockchain
-            p Here will go the dev platform 
+            h2 Node.js Equity Crowdfunding platform on the blockchain
+            p Existenz Home page 
            td
-            .container-fluid
+            .container-fluid(style='padding-top:2%;font-size:1.4em;')
              if isAlreadyLoggedin
                a(href='mycompanies') My Companies
                &nbsp&nbsp
@@ -33,7 +33,7 @@ html
                a(href='login') Login
                &nbsp&nbsp
                a(href='register') Register
-             br
+            .container-fluid
              if username
               b Username: #{username}
              br
