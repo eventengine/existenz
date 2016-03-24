@@ -7,6 +7,7 @@
 
 var index = require('../routes/index');
 var api = require('../routes/api');
+var router = require('../routes/router');
 var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
@@ -31,43 +32,8 @@ module.exports = function (app) {
 	app.get('/sendAsset', api.sendAsset);
 	
 	// Router
-	///////////////////////////////////
-	app.route('/managecompany/:company_name') 
-	.get(function(req, res) {
-		// if the user is logged in 
-	    if(req.user) {
-	    	username = req.user.username;
-	    }else{
-	    	res.redirect("/");
-	    }
-	    var companyname = req.params.company_name;
-	    var _fb = function(isAuthorized){	
-	    if(isAuthorized){ 
-			var _cb = function(err, body){ 
-			console.log( "htmlfactory.getMyCompany(companyname, _cb) _cb responded with body: "+JSON.stringify(body));
-	    	companyname = companyname.replace("+"," ");
-	    	var data = {
-	    		title: " Existenz - "+ companyname,
-	    		username: username,
-	    		companyname: companyname,
-	    		companyhdwallet: body.meta.hdwallet,
-	    		adminfirstname: body.meta.admin.firstname,
-	    		adminlastname: body.meta.admin.lastname,
-	    		adminemail: body.meta.admin.email,
-	    		description: body.meta.description,
-	    		website: body.profile.body.website,
-	    		lastmodified: body.meta.lastmodified
-	    	};
-		res.render('index/managecompany', data);
-		};
-        htmlfactory.getMyCompany(companyname, _cb);
-	    }else{
-	    	res.redirect('mycompanies');
-	    }
-	    };
-		
-		coluapi.checkProjectIfAdmin(req.params.company_name, username, _fb);
-	});	
+	///////////////////////////////////	
+	app.get('/managecompany/:company_name',router.manageCompany);	
 
 	// auth routes
 	/////////////////////////////
