@@ -10,10 +10,7 @@ block content
             label(for='assetname') Asset name
             input#assetname.form-control(type='text', name="assetname", placeholder='Asset name')
           .form-group
-            label(for='divisibility') Asset divisibility
-            input#lastname.form-control(type='text', name="divisibility", placeholder='enter numer')
-          .form-group
-            label(for='email')
+            label(for='contactemail')
               | Contact Email
               span(style='color:red;') *
             input#contactemail.form-control(type='email', name="contactemail", placeholder='Enter email')
@@ -29,21 +26,22 @@ block content
              option 6
              option 7
           .form-group
-           label(for='reissueable') Reissueable
-           select#reissueable.form-control(name='reissueable')
-             option true
-             option false
-          .form-group
-            label(for='Amount')
+            label(for='amount')
               | Amount of total shares
               span(style='color:red;') *
-            textarea#description.form-control(row=5, name="amount", placeholder='Enter the Amount Here')
+            input#amount.form-control(type='number', name="amount", placeholder='Enter the Amount Here')
           .form-group
             label(for='description') Description
-            textarea#lastname.form-control(row=5, name="description", placeholder='Enter Description Here')
+            textarea#description.form-control(row=5, name="description", placeholder='Enter Description Here')
           .form-group
-            label(for='website') Icon
-            input#lastname.form-control(type='url', name="icon", placeholder='Enter Icon url Here')
+            label(for='icon') Icon (Only .png for now)
+            input#icon.form-control(type='url', name="icon", placeholder='Enter Icon url Here')
+          .form-group
+            label(for='iconupload') Upload an icon
+            input(type='file',name='iconupload', onchange='previewFile()')
+            br
+            img(src='', height='200', alt='Image preview...', width='400')
+            br
           .form-group
             span.text-muted
               em
@@ -60,3 +58,4 @@ block content
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', integrity='sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==', crossorigin='anonymous')
+    script(src='js/utils.js')

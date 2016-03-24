@@ -29,7 +29,7 @@ module.exports = function (app) {
 	app.post('/createCompany', api.createCompany);
 	app.get('/getPrivateSeed', api.getPrivateSeed);
 	app.get('/getAdress', api.getAdress);
-	app.get('/issueAsset', api.issueAsset);
+	app.post('/issueAsset', api.issueAsset);
 	app.get('/sendAsset', api.sendAsset);
 	
 	// Router

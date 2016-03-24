@@ -11,6 +11,8 @@ var morgan      = require('morgan');
 var request = require('request');
 var Server = require('../models/server');
 var Companies = require('../models/companies');
+var Users = require('../models/users');
+
 // Each call to colu api will be done througth the api object 
 // and will fire a callback if succesful or an errback if failed 
 // (useful for transaction were you want to be able to delete the transaction if it failed)
@@ -116,6 +118,15 @@ errback("colu answered with an error : "+err);
 		callback(response);
 	});
 
+},
+"getUserHdaddress": function(username, callback){
+	var data = {};
+	Users.findOne({
+		username: username
+	},function(err, user) {
+		data =user.meta.hdwallet;
+		callback(null, data);
+	});
 },
 "checkProjectIfAdmin": function(companyname, username, callback){
 	response = false;
